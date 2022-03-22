@@ -169,7 +169,7 @@ class ForgetPwdPage extends StatelessWidget {
                               );
                             });
                       },
-                      imgName: 'assets/graphics/forget_reset_img.png',
+                      imgName: 'assets/graphics/ic_forget_reset_img.png',
                       color: kPrimaryColor,
                       textColor: Colors.white,
                       onPrimaryColor: Colors.white54,

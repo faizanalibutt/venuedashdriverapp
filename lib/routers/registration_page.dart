@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:venuedashdriverapp/routers/login_page.dart';
+import 'package:venuedashdriverapp/routers/privacy_policy_page.dart';
 import 'package:venuedashdriverapp/utils/constants.dart';
 import 'package:venuedashdriverapp/widgets/outlined_border_button_long.dart';
 import 'package:venuedashdriverapp/widgets/rounded_button_long.dart';
@@ -78,7 +80,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                 child: Padding(
                                   padding: const EdgeInsets.all(55),
                                   child: SvgPicture.asset(
-                                      "assets/graphics/images/Icon feather-camera.svg"),
+                                      "assets/graphics/images/ic_register_camera_icon.svg"),
                                 ),
                               ),
                               const SizedBox(height: 5),
@@ -231,7 +233,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                const RegistrationPage())),
+                                                const PrivacyPolicyPage())),
                                     child: const Text(
                                         "Accept terms & conditions",
                                         style: TextStyle(
@@ -276,7 +278,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              const RegistrationPage())),
+                                              const LoginPage())),
                                   color: Colors.white,
                                   textColor: Colors.white,
                                   imgName:

@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:venuedashdriverapp/routers/forget_email_page.dart';
+import 'package:venuedashdriverapp/routers/verified_email_page.dart';
 import 'package:venuedashdriverapp/utils/constants.dart';
 import 'package:venuedashdriverapp/widgets/outlined_border_button_long.dart';
 import 'package:venuedashdriverapp/widgets/rounded_button_long.dart';
@@ -92,7 +93,7 @@ class VerifyNoPage extends StatelessWidget {
                     RoundedButtonLong(
                       text: "Verify",
                       press: () async {
-                        // verify code page.
+                        Get.to(() => const VerifiedEmailPage());
                       },
                       imgName: 'assets/graphics/ic_okay_icon.png',
                       color: kPrimaryColor,
@@ -100,12 +101,13 @@ class VerifyNoPage extends StatelessWidget {
                       onPrimaryColor: Colors.white54,
                     ),
                     const Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 80.0, vertical: 30),
-                        child: Divider(
-                          color: kBlackColor30,
-                          height: 1,
-                        )),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 80.0, vertical: 30),
+                      child: Divider(
+                        color: kBlackColor30,
+                        height: 1,
+                      ),
+                    ),
                     SizedBox(
                       width: size.width * .86,
                       child: Row(children: [
@@ -118,7 +120,8 @@ class VerifyNoPage extends StatelessWidget {
                             },
                             textColor: kPrimaryColor,
                             borderColor: kPrimaryColor,
-                            imgName: "assets/graphics/ic_cancel_icon.png",
+                            imgName:
+                                "assets/graphics/ic_change_no_green_icon.png",
                           ),
                         ),
                         const SizedBox(width: 10),
@@ -130,7 +133,7 @@ class VerifyNoPage extends StatelessWidget {
                             },
                             textColor: kPrimaryColor,
                             borderColor: kPrimaryColor,
-                            imgName: "assets/graphics/ic_cancel_icon.png",
+                            imgName: "assets/graphics/ic_resend_green_icon.png",
                           ),
                         ),
                       ]),
