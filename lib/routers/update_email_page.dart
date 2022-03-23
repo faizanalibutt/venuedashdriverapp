@@ -2,23 +2,21 @@ import "package:flutter/material.dart";
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:venuedashdriverapp/routers/login_page.dart';
-import 'package:venuedashdriverapp/routers/registration_page.dart';
-import 'package:venuedashdriverapp/routers/update_email_page.dart';
 import 'package:venuedashdriverapp/utils/constants.dart';
+import 'package:venuedashdriverapp/widgets/custom_alert_confirmation_dialog.dart';
+import 'package:venuedashdriverapp/widgets/custom_alert_dialog.dart';
 import 'package:venuedashdriverapp/widgets/rounded_button_long.dart';
 import 'package:venuedashdriverapp/widgets/rounded_input_field.dart';
 import 'package:venuedashdriverapp/widgets/rounded_password_field.dart';
 
-import '../widgets/outlined_border_button_long.dart';
-
-class VerifiedEmailPage extends StatefulWidget {
-  const VerifiedEmailPage({Key? key}) : super(key: key);
+class UpdateEmailPage extends StatefulWidget {
+  const UpdateEmailPage({Key? key}) : super(key: key);
 
   @override
-  State<VerifiedEmailPage> createState() => _VerifiedEmailPageState();
+  State<UpdateEmailPage> createState() => _UpdateEmailPageState();
 }
 
-class _VerifiedEmailPageState extends State<VerifiedEmailPage> {
+class _UpdateEmailPageState extends State<UpdateEmailPage> {
   @override
   Widget build(BuildContext context) {
     bool _isPwdVisible = true;
@@ -37,7 +35,7 @@ class _VerifiedEmailPageState extends State<VerifiedEmailPage> {
                 width: size.width,
                 height: size.height * .07,
                 child: Text(
-                  "Login to your account",
+                  "Update Email Address",
                   style: GoogleFonts.lato(
                     textStyle: const TextStyle(
                       color: kBlackHeadingColor,
@@ -72,22 +70,11 @@ class _VerifiedEmailPageState extends State<VerifiedEmailPage> {
               child: SingleChildScrollView(
                   child: Column(
                 children: [
-                  Text(
-                    "Login to your account or update your email address",
-                    style: GoogleFonts.lato(
-                      textStyle: const TextStyle(
-                        color: kBlackSubHeadingColor,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 30),
                   Container(
                     padding: const EdgeInsets.only(left: 20),
                     alignment: Alignment.topLeft,
                     child: const Text(
-                      "Your Email",
+                      "Current Email",
                       style:
                           TextStyle(color: kBlackSubHeadingColor, fontSize: 10),
                     ),
@@ -105,7 +92,25 @@ class _VerifiedEmailPageState extends State<VerifiedEmailPage> {
                     padding: const EdgeInsets.only(left: 20),
                     alignment: Alignment.topLeft,
                     child: const Text(
-                      "Password",
+                      "New Email",
+                      style:
+                          TextStyle(color: kBlackSubHeadingColor, fontSize: 10),
+                    ),
+                  ),
+                  RoundedInputField(
+                    fieldWidth: .85,
+                    textInputType: TextInputType.emailAddress,
+                    onChanged: (value) {},
+                    color: kPrimaryColor,
+                    focus: false,
+                    textColor: kBlackFieldColor,
+                    cursorColor: kPrimaryColor,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(left: 20),
+                    alignment: Alignment.topLeft,
+                    child: const Text(
+                      "Current Password",
                       style:
                           TextStyle(color: kBlackSubHeadingColor, fontSize: 10),
                     ),
@@ -132,70 +137,21 @@ class _VerifiedEmailPageState extends State<VerifiedEmailPage> {
                     height: 20.0,
                   ),
                   RoundedButtonLong(
-                    text: "Login",
+                    text: "Update Email Address",
                     press: () async {
-                      Get.to(() => const VerifiedEmailPage());
+                      Get.dialog(
+                          CustomAlertConfirmationDialog(
+                            titleText: 'Success',
+                            descText: 'Your email address has been updated successfully.',
+                            onConfirmPressed: () {
+                              Get.to(() => const LoginPage());
+                          }),
+                          barrierDismissible: false);
                     },
                     imgName: 'assets/graphics/sign_up_login_icon.png',
                     color: kPrimaryColor,
                     textColor: Colors.white,
                     onPrimaryColor: Colors.white54,
-                  ),
-                  const Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 80.0, vertical: 30),
-                    child: Divider(
-                      color: kBlackColor30,
-                      height: 1,
-                    ),
-                  ),
-                  OutlinedBorderButtonLong(
-                      buttonWidth: .85,
-                      borderColor: kPrimaryColor,
-                      text: "Update Email Address",
-                      press: () => Get.to(() => const UpdateEmailPage()),
-                      color: kPrimaryColor,
-                      textColor: kPrimaryColor,
-                      imgName:
-                          'assets/graphics/ic_update_email_green_icon.png'),
-                  const SizedBox(height: 20),
-                  Text(
-                    "Go Back to:",
-                    style: GoogleFonts.lato(
-                      textStyle: const TextStyle(
-                        color: kBlackSubHeadingColor,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  SizedBox(
-                    width: size.width * .85,
-                    child: Row(children: [
-                      Expanded(
-                        child: OutlinedBorderButtonLong(
-                          text: "Login",
-                          press: () => Get.to(() => const LoginPage()),
-                          textColor: kPrimaryColor,
-                          borderColor: kPrimaryColor,
-                          imgName: "assets/graphics/welcome_login_icon.png",
-                        ),
-                      ),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: OutlinedBorderButtonLong(
-                          text: "Register",
-                          press: () => Get.to(() => const RegistrationPage()),
-                          textColor: kPrimaryColor,
-                          borderColor: kPrimaryColor,
-                          imgName: "assets/graphics/sign_up_register_icon.png",
-                        ),
-                      ),
-                    ]),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).viewInsets.bottom,
                   ),
                 ],
               )),

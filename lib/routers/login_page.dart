@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:venuedashdriverapp/routers/forget_email_page.dart';
 import 'package:venuedashdriverapp/routers/forget_pwd_page.dart';
+import 'package:venuedashdriverapp/routers/home_page.dart';
+import 'package:venuedashdriverapp/routers/registration_page.dart';
 import 'package:venuedashdriverapp/utils/constants.dart';
 import 'package:venuedashdriverapp/widgets/outlined_border_button_long.dart';
 import 'package:venuedashdriverapp/widgets/rounded_button_long.dart';
@@ -162,8 +164,7 @@ class _LoginPageState extends State<LoginPage> {
                                 press: () => Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            const LoginPage())),
+                                        builder: (context) => HomePage())),
                                 imgName:
                                     'assets/graphics/welcome_login_icon.png',
                                 color: Colors.white,
@@ -198,7 +199,7 @@ class _LoginPageState extends State<LoginPage> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              const LoginPage())),
+                                              const RegistrationPage())),
                                   color: Colors.white,
                                   textColor: Colors.white,
                                   imgName:
