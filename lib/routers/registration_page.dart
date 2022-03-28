@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:venuedashdriverapp/routers/home_page.dart';
 import 'package:venuedashdriverapp/routers/login_page.dart';
 import 'package:venuedashdriverapp/routers/privacy_policy_page.dart';
 import 'package:venuedashdriverapp/utils/constants.dart';
@@ -250,7 +251,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            RegistrationPage())),
+                                            HomePage())),
                                 imgName:
                                     'assets/graphics/sign_up_register_icon.png',
                                 color: Colors.white,
