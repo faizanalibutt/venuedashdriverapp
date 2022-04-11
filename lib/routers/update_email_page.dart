@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:venuedashdriverapp/routers/login_page.dart';
 import 'package:venuedashdriverapp/utils/constants.dart';
 import 'package:venuedashdriverapp/widgets/custom_alert_confirmation_dialog.dart';
-import 'package:venuedashdriverapp/widgets/custom_alert_dialog.dart';
 import 'package:venuedashdriverapp/widgets/rounded_button_long.dart';
 import 'package:venuedashdriverapp/widgets/rounded_input_field.dart';
 import 'package:venuedashdriverapp/widgets/rounded_password_field.dart';

@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:venuedashdriverapp/routers/order_history_detail_page.dart';
 import 'package:venuedashdriverapp/utils/constants.dart';
 
 class OrderHistoryPage extends StatelessWidget {
@@ -16,7 +17,7 @@ class OrderHistoryPage extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           SizedBox(
-            height: size.height * .04,
+            height: size.height * .035,
           ),
           Stack(
             children: [
@@ -54,138 +55,126 @@ class OrderHistoryPage extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
-            height: size.height * .87,
-            width: size.width * .9,
-            child: MediaQuery.removePadding(
-              context: context,
-              removeTop: true,
-              removeBottom: true,
-              child: ListView.builder(
-                itemBuilder: (context, position) {
-                  return Column(
-                    children: [
-                      Ink(
-                        width: size.width,
-                        height: 80,
-                        padding: EdgeInsets.zero,
-                        decoration: const BoxDecoration(
-                          color: kLoationFiedlBgColor,
-                          borderRadius: BorderRadius.all(Radius.circular(16)),
-                        ),
-                        child: InkWell(
-                          onTap: () => Get.back(), //to(() => const OrderHistoryDetailsPage()),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(16)),
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: size.width * .7,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 8, vertical: 10),
+          Material(
+            color: Colors.white,
+            child: SizedBox(
+              height: size.height * .87,
+              width: size.width * .9,
+              child: MediaQuery.removePadding(
+                context: context,
+                removeTop: true,
+                removeBottom: true,
+                child: ListView.builder(
+                  itemBuilder: (context, position) {
+                    return Column(
+                      children: [
+                        Ink(
+                          width: size.width,
+                          height: 80,
+                          padding: EdgeInsets.zero,
+                          decoration: const BoxDecoration(
+                            color: kLoationFiedlBgColor,
+                            borderRadius: BorderRadius.all(Radius.circular(16)),
+                          ),
+                          child: InkWell(
+                            onTap: () => Get.to(() => const OrderHistoryDetailPage()),
+                            borderRadius: const BorderRadius.all(Radius.circular(16)),
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  width: size.width * .7,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Flexible(
+                                          flex: 3,
+                                          fit: FlexFit.tight,
+                                          child: Text(
+                                            "Voluptas Ut Aut Shop",
+                                            style: GoogleFonts.lato(
+                                              textStyle: const TextStyle(
+                                                  color: kBlackHeadingColor,
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.bold,
+                                                  overflow: TextOverflow.ellipsis),
+                                            ),
+                                          ),
+                                        ),
+                                        Flexible(
+                                          flex: 2,
+                                          fit: FlexFit.tight,
+                                          child: Text(
+                                            "3 items",
+                                            style: GoogleFonts.lato(
+                                              textStyle: const TextStyle(color: kBlackSubHeadingColor, fontSize: 12, overflow: TextOverflow.ellipsis),
+                                            ),
+                                          ),
+                                        ),
+                                        Flexible(
+                                          flex: 2,
+                                          fit: FlexFit.tight,
+                                          child: Text(
+                                            "March 22, 2021 - 09:23 PM",
+                                            style: GoogleFonts.lato(
+                                              textStyle: const TextStyle(color: kBlackSubHeadingColor, fontSize: 12, overflow: TextOverflow.ellipsis),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: size.width * .2,
                                   child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       Flexible(
-                                        flex: 3,
+                                        flex: 4,
                                         fit: FlexFit.tight,
-                                        child: Text(
-                                          "Voluptas Ut Aut Shop",
-                                          style: GoogleFonts.lato(
-                                            textStyle: const TextStyle(
-                                                color: kBlackHeadingColor,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold,
-                                                overflow:
-                                                    TextOverflow.ellipsis),
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(top: 8, right: 10),
+                                          child: Text(
+                                            "\$38.57",
+                                            style: GoogleFonts.lato(
+                                              textStyle: const TextStyle(
+                                                  color: kBlackHeadingColor,
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.bold,
+                                                  overflow: TextOverflow.ellipsis),
+                                            ),
                                           ),
                                         ),
                                       ),
                                       Flexible(
-                                        flex: 2,
-                                        fit: FlexFit.tight,
-                                        child: Text(
-                                          "3 items",
-                                          style: GoogleFonts.lato(
-                                            textStyle: const TextStyle(
-                                                color: kBlackSubHeadingColor,
-                                                fontSize: 12,
-                                                overflow:
-                                                    TextOverflow.ellipsis),
-                                          ),
-                                        ),
-                                      ),
-                                      Flexible(
-                                        flex: 2,
-                                        fit: FlexFit.tight,
-                                        child: Text(
-                                          "March 22, 2021 - 09:23 PM",
-                                          style: GoogleFonts.lato(
-                                            textStyle: const TextStyle(
-                                                color: kBlackSubHeadingColor,
-                                                fontSize: 12,
-                                                overflow:
-                                                    TextOverflow.ellipsis),
+                                        flex: 7,
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(top: 3, right: 3),
+                                          child: InkWell(
+                                            onTap: () {},
+                                            child: Image.asset(
+                                              "assets/graphics/ic_expand_settings_icon.png",
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ],
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: size.width * .2,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    Flexible(
-                                      flex: 4,
-                                      fit: FlexFit.tight,
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            top: 8, right: 10),
-                                        child: Text(
-                                          "\$38.57",
-                                          style: GoogleFonts.lato(
-                                            textStyle: const TextStyle(
-                                                color: kBlackHeadingColor,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold,
-                                                overflow:
-                                                    TextOverflow.ellipsis),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Flexible(
-                                      flex: 7,
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            top: 3, right: 3),
-                                        child: InkWell(
-                                          onTap: () {},
-                                          child: Image.asset(
-                                            "assets/graphics/ic_expand_settings_icon.png",
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                    ],
-                  );
-                },
-                itemCount: 20,
+                        const SizedBox(
+                          height: 10,
+                        ),
+                      ],
+                    );
+                  },
+                  itemCount: 20,
+                ),
               ),
             ),
           ),

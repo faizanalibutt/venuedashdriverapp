@@ -54,12 +54,10 @@ class HelpPage extends StatelessWidget {
           ),
           SizedBox(
             height: size.height * .87,
-            child: Padding(
-              child: Container(
-                child: const Center(child: Text("This page will be filled once"
-                " requirements are cleared and app is in final form"),),
-              ),
-              padding: const EdgeInsets.all(20),
+            child: const Padding(
+              child: Center(child: Text("This page will be filled once"
+              " requirements are cleared and app is in final form"),),
+              padding: EdgeInsets.all(20),
             ),
           ),
         ],

@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:venuedashdriverapp/controller/text_controller.dart';
+import 'package:venuedashdriverapp/routers/accepted_orders_page.dart';
 import 'package:venuedashdriverapp/routers/feedback_page.dart';
 import 'package:venuedashdriverapp/routers/help_page.dart';
 import 'package:venuedashdriverapp/routers/location_edit_page.dart';
@@ -13,9 +14,9 @@ import 'package:venuedashdriverapp/routers/profile_edit_page.dart';
 import 'package:venuedashdriverapp/routers/settings_page.dart';
 import 'package:venuedashdriverapp/utils/constants.dart';
 import 'package:venuedashdriverapp/widgets/custom_action_dialog.dart';
+import 'package:venuedashdriverapp/widgets/custom_alert_confirmation_dialog.dart';
 import 'package:venuedashdriverapp/widgets/outlined_border_button_long.dart';
 import 'package:venuedashdriverapp/widgets/rounded_button_long.dart';
-import 'package:venuedashdriverapp/widgets/rounded_location_input_field.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -109,7 +110,7 @@ class _HomePageState extends State<HomePage> {
                         fontWeight: FontWeight.bold,
                       ))),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 Ink(
                   width: size.width * .9,
                   decoration: const BoxDecoration(
@@ -127,23 +128,18 @@ class _HomePageState extends State<HomePage> {
                           child: Row(
                             children: [
                               Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 10),
-                                child: SvgPicture.asset(
-                                    "assets/graphics/images/ic_home_location_mark.svg"),
+                                padding: const EdgeInsets.symmetric(horizontal: 10),
+                                child: SvgPicture.asset("assets/graphics/images/ic_home_location_mark.svg"),
                               ),
                               Obx(
                                 () => Flexible(
-                                    child: Text(
-                                        widget.textControllerGet
-                                            .controllerTextValue.value,
+                                    child: Text(widget.textControllerGet.controllerTextValue.value,
                                         style: GoogleFonts.lato(
                                             textStyle: const TextStyle(
                                                 color: kBlackHeadingColor,
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.normal,
-                                                overflow:
-                                                    TextOverflow.ellipsis)))),
+                                                overflow: TextOverflow.ellipsis)))),
                               ),
                             ],
                           ),
@@ -179,6 +175,7 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.all(Radius.circular(16)),
                   ),
                   child: InkWell(
+                    onTap: () => Get.to(() => const AcceptedOrdersPage()),
                     borderRadius: const BorderRadius.all(Radius.circular(16)),
                     child: Row(
                       children: [
@@ -199,10 +196,7 @@ class _HomePageState extends State<HomePage> {
                                   child: Text(
                                     "5",
                                     style: GoogleFonts.lato(
-                                      textStyle: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          overflow: TextOverflow.ellipsis),
+                                      textStyle: const TextStyle(color: Colors.white, fontSize: 20, overflow: TextOverflow.ellipsis),
                                     ),
                                   ),
                                 ),
@@ -212,10 +206,7 @@ class _HomePageState extends State<HomePage> {
                                 child: Text(
                                   "Accepted Orders",
                                   style: GoogleFonts.lato(
-                                    textStyle: const TextStyle(
-                                        color: kBlackHeadingColor,
-                                        fontSize: 14,
-                                        overflow: TextOverflow.ellipsis),
+                                    textStyle: const TextStyle(color: kBlackHeadingColor, fontSize: 14, overflow: TextOverflow.ellipsis),
                                   ),
                                 ),
                               ),
@@ -226,12 +217,9 @@ class _HomePageState extends State<HomePage> {
                         SizedBox(
                           child: Padding(
                             padding: const EdgeInsets.only(top: 3),
-                            child: InkWell(
-                              onTap: () {},
-                              child: Image.asset(
-                                "assets/graphics/ic_expand_settings_icon.png",
-                                width: size.width * .15,
-                              ),
+                            child: Image.asset(
+                              "assets/graphics/ic_expand_settings_icon.png",
+                              width: size.width * .15,
                             ),
                           ),
                         ),
@@ -242,198 +230,148 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(height: 25),
                 Material(
                   color: Colors.white,
-                  child: SizedBox(
-                      height: size.height * .5,
-                      child: MediaQuery.removePadding(
-                          context: context,
-                          removeTop: true,
-                          removeBottom: true,
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            itemBuilder: (context, position) {
-                              return Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Ink(
-                                    width: size.width * .9,
-                                    height: 185,
-                                    padding: EdgeInsets.zero,
-                                    decoration: const BoxDecoration(
-                                      color: kLoationFiedlBgColor,
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(16)),
-                                    ),
-                                    child: Padding(
-                                        padding: const EdgeInsets.all(10),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Flexible(
-                                                flex: 7,
-                                                child: Row(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Expanded(
-                                                      flex: 4,
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8),
-                                                        child: Image.asset(
-                                                            "assets/graphics/home_venue_order_img.png"),
-                                                      ),
-                                                    ),
-                                                    Expanded(
-                                                      flex: 6,
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .only(left: 10),
-                                                        child: Column(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .start,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                              "Voluptas Ut Aut Shop",
-                                                              style: GoogleFonts
-                                                                  .lato(
-                                                                textStyle: const TextStyle(
-                                                                    color:
-                                                                        kBlackHeadingColor,
-                                                                    fontSize:
-                                                                        15,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold,
-                                                                    overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis),
-                                                              ),
-                                                            ),
-                                                            const SizedBox(
-                                                                height: 5),
-                                                            Row(
-                                                              children: [
-                                                                Image.asset(
-                                                                    "assets/graphics/ic_distacnce_green_icon.png"),
-                                                                const SizedBox(
-                                                                    width: 5),
-                                                                Text(
-                                                                  "17.2 km away.",
-                                                                  style:
-                                                                      GoogleFonts
-                                                                          .lato(
-                                                                    textStyle: const TextStyle(
-                                                                        color:
-                                                                            kBlackSubHeadingColor,
-                                                                        fontSize:
-                                                                            10,
-                                                                        overflow:
-                                                                            TextOverflow.ellipsis),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            const SizedBox(
-                                                                height: 5),
-                                                            Text(
-                                                              "Time Left: 43:17",
-                                                              style: GoogleFonts
-                                                                  .lato(
-                                                                textStyle: const TextStyle(
-                                                                    color:
-                                                                        kBlackSubHeadingColor,
-                                                                    fontSize:
-                                                                        10,
-                                                                    overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis),
-                                                              ),
-                                                            ),
-                                                            const SizedBox(
-                                                                height: 5),
-                                                            Text(
-                                                              "3 Items   \$9.52",
-                                                              style: GoogleFonts
-                                                                  .lato(
-                                                                textStyle: const TextStyle(
-                                                                    color:
-                                                                        kBlackSubHeadingColor,
-                                                                    fontSize:
-                                                                        10,
-                                                                    overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis),
-                                                              ),
-                                                            ),
-                                                            const SizedBox(
-                                                                height: 5),
-                                                            Text(
-                                                              "March 22, 2021 - 09:23 PM",
-                                                              style: GoogleFonts
-                                                                  .lato(
-                                                                textStyle: const TextStyle(
-                                                                    color:
-                                                                        kBlackSubHeadingColor,
-                                                                    fontSize:
-                                                                        10,
-                                                                    overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis),
-                                                              ),
-                                                            ),
-                                                            const SizedBox(
-                                                                height: 5),
-                                                          ],
+                  child: MediaQuery.removePadding(
+                      context: context,
+                      removeTop: true,
+                      removeBottom: true,
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, position) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Ink(
+                                width: size.width * .9,
+                                height: 185,
+                                padding: EdgeInsets.zero,
+                                decoration: const BoxDecoration(
+                                  color: kLoationFiedlBgColor,
+                                  borderRadius: BorderRadius.all(Radius.circular(16)),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Flexible(
+                                          flex: 7,
+                                          child: Row(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Expanded(
+                                                flex: 4,
+                                                child: ClipRRect(
+                                                  borderRadius: BorderRadius.circular(8),
+                                                  child: Image.asset("assets/graphics/home_venue_order_img.png"),
+                                                ),
+                                              ),
+                                              Expanded(
+                                                flex: 6,
+                                                child: Padding(
+                                                  padding: const EdgeInsets.only(left: 10),
+                                                  child: Column(
+                                                    mainAxisAlignment: MainAxisAlignment.start,
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    children: [
+                                                      Text(
+                                                        "Voluptas Ut Aut Shop",
+                                                        style: GoogleFonts.lato(
+                                                          textStyle: const TextStyle(
+                                                              color: kBlackHeadingColor,
+                                                              fontSize: 15,
+                                                              fontWeight: FontWeight.bold,
+                                                              overflow: TextOverflow.ellipsis),
                                                         ),
                                                       ),
-                                                    )
-                                                  ],
-                                                )),
-                                            Flexible(
-                                              flex: 3,
-                                              child: Row(children: [
-                                                Expanded(
-                                                  child:
-                                                      OutlinedBorderButtonLong(
-                                                    text: "Reject",
-                                                    press: () {},
-                                                    textColor: kPrimaryColor,
-                                                    borderColor: kPrimaryColor,
-                                                    imgName:
-                                                        "assets/graphics/ic_cancel_icon.png",
+                                                      const SizedBox(height: 5),
+                                                      Row(
+                                                        children: [
+                                                          Image.asset("assets/graphics/ic_distacnce_green_icon.png"),
+                                                          const SizedBox(width: 5),
+                                                          Text(
+                                                            "17.2 km away.",
+                                                            style: GoogleFonts.lato(
+                                                              textStyle: const TextStyle(
+                                                                  color: kBlackSubHeadingColor, fontSize: 10, overflow: TextOverflow.ellipsis),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      const SizedBox(height: 5),
+                                                      Text(
+                                                        "Time Left: 43:17",
+                                                        style: GoogleFonts.lato(
+                                                          textStyle: const TextStyle(
+                                                              color: kBlackSubHeadingColor, fontSize: 10, overflow: TextOverflow.ellipsis),
+                                                        ),
+                                                      ),
+                                                      const SizedBox(height: 5),
+                                                      Text(
+                                                        "3 Items   \$9.52",
+                                                        style: GoogleFonts.lato(
+                                                          textStyle: const TextStyle(
+                                                              color: kBlackSubHeadingColor, fontSize: 10, overflow: TextOverflow.ellipsis),
+                                                        ),
+                                                      ),
+                                                      const SizedBox(height: 5),
+                                                      Text(
+                                                        "March 22, 2021 - 09:23 PM",
+                                                        style: GoogleFonts.lato(
+                                                          textStyle: const TextStyle(
+                                                              color: kBlackSubHeadingColor, fontSize: 10, overflow: TextOverflow.ellipsis),
+                                                        ),
+                                                      ),
+                                                      const SizedBox(height: 5),
+                                                    ],
                                                   ),
                                                 ),
-                                                const SizedBox(width: 10),
-                                                Expanded(
-                                                  child: RoundedButtonLong(
-                                                    buttonWidth: 1,
-                                                    text: "Accept",
-                                                    press: () => {},
-                                                    textColor: Colors.white,
-                                                    imgName:
-                                                        "assets/graphics/ic_okay_icon.png",
-                                                    onPrimaryColor:
-                                                        Colors.white54,
-                                                  ),
-                                                ),
-                                              ]),
+                                              )
+                                            ],
+                                          )),
+                                      Flexible(
+                                        flex: 3,
+                                        child: Row(children: [
+                                          Expanded(
+                                            child: OutlinedBorderButtonLong(
+                                              text: "Reject",
+                                              press: () {},
+                                              textColor: kPrimaryColor,
+                                              borderColor: kPrimaryColor,
+                                              imgName: "assets/graphics/ic_cancel_icon.png",
                                             ),
-                                          ],
-                                        )),
+                                          ),
+                                          const SizedBox(width: 10),
+                                          Expanded(
+                                            child: RoundedButtonLong(
+                                              buttonWidth: 1,
+                                              text: "Accept",
+                                              press: () => {
+                                                Get.dialog(CustomAlertConfirmationDialog(
+                                                    isSvg: false,
+                                                    icon: "assets/graphics/ic_alert_green_icon.png",
+                                                    dialogHeight: 240,
+                                                    titleText: "Limited Orders",
+                                                    descText: "You can only accept 5 orders at a time.",
+                                                    onConfirmPressed: () => Get.back()))
+                                              },
+                                              textColor: Colors.white,
+                                              imgName: "assets/graphics/ic_okay_icon.png",
+                                              onPrimaryColor: Colors.white54,
+                                            ),
+                                          ),
+                                        ]),
+                                      ),
+                                    ],
                                   ),
-                                  const SizedBox(height: 20),
-                                ],
-                              );
-                            },
-                            itemCount: 6,
-                          ))),
+                                ),
+                              ),
+                              const SizedBox(height: 20),
+                            ],
+                          );
+                        },
+                        itemCount: 6,
+                      )),
                 )
               ]))),
         ],
@@ -443,9 +381,7 @@ class _HomePageState extends State<HomePage> {
         child: Drawer(
           backgroundColor: Colors.white,
           shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                topRight: Radius.circular(30),
-                bottomRight: Radius.circular(30)),
+            borderRadius: BorderRadius.only(topRight: Radius.circular(30), bottomRight: Radius.circular(30)),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -467,8 +403,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(
-                    left: 15, right: 15, top: 10, bottom: 20),
+                padding: const EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 20),
                 child: Ink(
                   decoration: const BoxDecoration(
                     color: kLoationFiedlBgColor,
@@ -502,8 +437,7 @@ class _HomePageState extends State<HomePage> {
                                     child: Image.asset(
                                       "assets/graphics/ic_profile_icon.png",
                                     ),
-                                    padding:
-                                        const EdgeInsets.only(top: 8, left: 8),
+                                    padding: const EdgeInsets.only(top: 8, left: 8),
                                   ),
                                   const SizedBox(
                                     height: 5,
@@ -520,8 +454,7 @@ class _HomePageState extends State<HomePage> {
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
                                     ),
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 8),
+                                    padding: const EdgeInsets.symmetric(horizontal: 8),
                                   ),
                                   Padding(
                                     child: Text(
@@ -535,8 +468,7 @@ class _HomePageState extends State<HomePage> {
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
                                     ),
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 8),
+                                    padding: const EdgeInsets.symmetric(horizontal: 8),
                                   ),
                                 ],
                               ),
@@ -555,16 +487,13 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               SizedBox(
-                height: size.height * .63,
+                height: size.height * .6,
                 child: Padding(
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
                         InkWell(
-                            onTap: () => {
-                                  widget._key.currentState!.openEndDrawer(),
-                                  Get.to(() => const HelpPage())
-                                },
+                            onTap: () => {widget._key.currentState!.openEndDrawer(), Get.to(() => const HelpPage())},
                             child: Padding(
                               child: Row(
                                 children: [
@@ -587,8 +516,7 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ],
                               ),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 15, vertical: 10),
+                              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                             )),
                         const SizedBox(
                           height: 5,
@@ -620,8 +548,7 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ],
                               ),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 15, vertical: 10),
+                              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                             )),
                         const SizedBox(
                           height: 5,
@@ -653,8 +580,7 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ],
                               ),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 15, vertical: 10),
+                              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                             )),
                         const SizedBox(
                           height: 5,
@@ -686,8 +612,7 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ],
                               ),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 15, vertical: 10),
+                              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                             )),
                         const SizedBox(
                           height: 20,
@@ -705,21 +630,16 @@ class _HomePageState extends State<HomePage> {
                             borderRadius: BorderRadius.all(Radius.circular(8)),
                           ),
                           child: InkWell(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(8)),
+                              borderRadius: const BorderRadius.all(Radius.circular(8)),
                               onTap: () {
                                 widget._key.currentState!.openEndDrawer();
                                 Get.dialog(
                                     CustomActionDialog(
-                                      icon:
-                                          "assets/graphics/ic_sign_out_green_icon.png",
+                                      icon: "assets/graphics/ic_sign_out_green_icon.png",
                                       title: "Logout?",
-                                      description:
-                                          "Are you sure you want to logout your account?",
-                                      iconVe:
-                                          "assets/graphics/ic_sign_out_white_icon.png",
-                                      iconNve:
-                                          "assets/graphics/ic_cancel_icon.png",
+                                      description: "Are you sure you want to logout your account?",
+                                      iconVe: "assets/graphics/ic_sign_out_white_icon.png",
+                                      iconNve: "assets/graphics/ic_cancel_icon.png",
                                       titleBtnYes: "Logout",
                                       titleBtnNo: "No",
                                       onYesPressed: () {
@@ -752,8 +672,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ],
                                 ),
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 15, vertical: 10),
+                                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                               )),
                         ),
                         const SizedBox(
@@ -765,8 +684,7 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                  padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                 ),
               )
             ],
