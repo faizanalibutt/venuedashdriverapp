@@ -19,14 +19,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="YRO-k0-Ey4">
-                                <rect key="frame" x="116.5" y="366.5" width="181.5" height="163.5"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="YRO-k0-Ey4">
+                                <rect key="frame" x="20" y="307.5" width="394" height="281"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UpperLaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="6vR-Ih-Olz">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="221"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="6vR-Ih-Olz" secondAttribute="height" multiplier="15:8" id="fR3-85-6g8"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LowerLaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="XfO-2O-YyQ">
+                                <rect key="frame" x="0.0" y="675" width="414" height="221"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="XfO-2O-YyQ" secondAttribute="height" multiplier="15:8" id="WSB-na-8F6"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="XfO-2O-YyQ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="0Vf-im-7Ah"/>
                             <constraint firstItem="YRO-k0-Ey4" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="1a2-6s-vTC"/>
+                            <constraint firstAttribute="trailing" secondItem="YRO-k0-Ey4" secondAttribute="trailing" id="3Ik-NW-mvV"/>
                             <constraint firstItem="YRO-k0-Ey4" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="4X2-HB-R7a"/>
+                            <constraint firstItem="6vR-Ih-Olz" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="8Zy-k6-2yV"/>
+                            <constraint firstAttribute="trailing" secondItem="6vR-Ih-Olz" secondAttribute="trailing" id="Gun-Oz-eja"/>
+                            <constraint firstItem="6vR-Ih-Olz" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="JJC-pn-2M4"/>
+                            <constraint firstAttribute="trailing" secondItem="XfO-2O-YyQ" secondAttribute="trailing" id="OvA-6U-9yU"/>
+                            <constraint firstAttribute="bottom" secondItem="XfO-2O-YyQ" secondAttribute="bottom" id="akz-tl-6pc"/>
+                            <constraint firstItem="YRO-k0-Ey4" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="20" id="wxR-ZX-UnC"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -36,6 +56,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LaunchImage" width="181.5" height="163.5"/>
+        <image name="LaunchImage" width="417.5" height="281"/>
+        <image name="LowerLaunchImage" width="375" height="320"/>
+        <image name="UpperLaunchImage" width="375" height="260"/>
     </resources>
 </document>
