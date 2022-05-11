@@ -21,7 +21,7 @@ class VerifyNoPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              height: size.height * .04,
+              height: size.height * .035,
             ),
             Stack(
               children: [

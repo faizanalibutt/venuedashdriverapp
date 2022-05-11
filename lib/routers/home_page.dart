@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           Container(
             alignment: Alignment.bottomCenter,
-            height: size.height * .12,
+            height: size.height * .13,
             child: Row(children: [
               SizedBox(
                 width: size.width * .02,
@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
             ]),
           ),
           SizedBox(
-              height: size.height * .88,
+              height: size.height * .87,
               child: SingleChildScrollView(
                   child: Column(mainAxisSize: MainAxisSize.min, children: [
                 Container(
@@ -388,7 +388,7 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                height: size.height * .12,
+                height: size.height * .13,
                 alignment: Alignment.bottomLeft,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
